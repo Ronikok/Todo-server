@@ -11,7 +11,7 @@ try {
     res.status(200).json(rows)
     } catch (error) {
         console.log(error)
-        res.statusMessage = error
+        //res.statusMessage = error
         res.status(500).json({error: String(error)})
     }
 })
