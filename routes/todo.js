@@ -41,33 +41,6 @@ todoRouter.delete("/delete/:id", async(req,res) => {
     }
 })
 
-//debugging
-todoRouter.get("/db-check", async (req, res) => {
-  try {
-    const info = await query(`
-      SELECT
-        current_database() AS db,
-        current_user AS db_user,
-        inet_server_addr() AS host,
-        inet_server_port() AS port,
-        current_schema() AS schema
-    `);
-
-    const tables = await query(`
-      SELECT schemaname, tablename
-      FROM pg_tables
-      WHERE tablename = 'task'
-    `);
-
-    res.status(200).json({
-      info: info.rows[0],
-      task_table: tables.rows
-    });
-  } catch (error) {
-    res.status(500).json({ error: String(error) });
-  }
-});
-
 module.exports = {
     todoRouter
 }
