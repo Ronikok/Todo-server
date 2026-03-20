@@ -42,7 +42,7 @@ todoRouter.delete("/delete/:id", async(req,res) => {
 })
 
 //for debugging
-app.get('/debug', (req, res) => {
+todoRouter.get('/debug', (req, res) => {
   res.json({
     db: process.env.DATABASE_URL,
     nodeEnv: process.env.NODE_ENV
